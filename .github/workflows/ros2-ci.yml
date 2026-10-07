@@ -1,0 +1,25 @@
+name: ROS 2 CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup ROS 2 Environment
+        uses: ros-tooling/action-setup-ros@v0.7
+        with:
+          required-ros-distributions: humble
+
+      - name: Build and test package
+        uses: ros-tooling/action-ros-ci@0.3
+        with:
+          package-name: my_robot_pkg
+          target-ros2-distro: humble
