@@ -14,12 +14,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup ROS 2 Environment
-        uses: ros-tooling/action-setup-ros@v0.7
+        uses: ros-tooling/setup-ros@v0.7
         with:
           required-ros-distributions: humble
 
       - name: Build and test package
-        uses: ros-tooling/action-ros-ci@0.3
+        uses: ros-tooling/action-ros-ci@v0
         with:
           package-name: my_robot_pkg
           target-ros2-distro: humble
